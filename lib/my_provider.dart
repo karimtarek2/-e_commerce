@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'category_class.dart';
+
 
 
 class MyProvider with ChangeNotifier {
   // String name = '';
   //
-  // final map = Map<int, bool>();
+   final map = Map<int, bool>();
   // final tagMap = Map<int, String>();
   //
-  // List<Category> favoriteNews = [];
+   List<Category> myCart = [];
   //
   //
-  // bool isFavorite(int id) {
-  //   return map[id] ?? false;
-  // }
+  bool isFavorite(int id) {
+    return map[id] ?? false;
+  }
   //
   // List<Category> trueKeys = [];
   //
@@ -38,16 +40,16 @@ class MyProvider with ChangeNotifier {
   //   return tagMap[id];
   // }
   //
-  // void toggleFavorite(Category item) {
-  //   final isFavorite = map[item.id] ?? false;
-  //   map[item.id] = !isFavorite;
-  //
-  //   if (isFavorite) {
-  //     favoriteNews.remove(item);
-  //   } else {
-  //     favoriteNews.add(item);
-  //   }
-  //
-  //   notifyListeners();
-  // }
+  void toggleFavorite(Category item) {
+    final isFavorite = map[item.id] ?? false;
+    map[item.id] = !isFavorite;
+
+    if (isFavorite) {
+      myCart.remove(item);
+    } else {
+      myCart.add(item);
+    }
+
+    notifyListeners();
+  }
 }

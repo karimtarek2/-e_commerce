@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:e_commerce/tab_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'e-commerce',
-      home: MyHomePage(),
+      home: TabsScreen(),
     );
   }
 }
