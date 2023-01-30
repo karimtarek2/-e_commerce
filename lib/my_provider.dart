@@ -3,26 +3,66 @@ import 'package:http/http.dart' as http;
 
 import 'category_class.dart';
 
-
-
 class MyProvider with ChangeNotifier {
   // String name = '';
-  //
-   final map = Map<int, bool>();
-  // final tagMap = Map<int, String>();
-  //
-   List<Category> myCart = [];
-  //
-  //
+  int itemCounter = 0;
+  final map = Map<int, bool>();
+  final itemCount = Map<int, int>();
+
+  List<Category> myCart = [];
+
   bool isFavorite(int id) {
     return map[id] ?? false;
   }
-  //
-  // List<Category> trueKeys = [];
-  //
-  // void addTags(int id, String tags) {
-  //   tagMap.addAll({id: tags});
-  // }
+
+  int? itemcount(int id) {
+    if (itemCount[id] == null) {
+      itemCount[id] = 0;
+    } else {
+      itemCount.forEach((key, value) {
+        if (id == key) {
+          itemCount[id];
+        }
+      });
+    }
+    return itemCount[id];
+  }
+  void decrementCounter (id){
+    itemCount.forEach((key, value) {
+      if (id == key){
+        itemCounter--;
+      }
+    });
+  }
+  void incrementCounter (id){
+    // itemCount.forEach((key, value) {
+    //   if (id == key){
+        itemCounter++;
+    //   }
+    // });
+  }
+
+  void addcount(int id, int count) {
+    itemCount.addAll({id: count});
+  }
+
+  var total = 0.0;
+
+  double subTotal(int id, double counter) {
+    if(itemCount[id]== null){
+      itemCount[id] = 0;
+    }else{
+      itemCount.forEach((key, value) {
+        if(id == key) {
+          total = itemCount[id]! * counter;
+        }
+      });
+    }
+
+
+    return total;
+  }
+
   //
   // String tag = '';
   //
